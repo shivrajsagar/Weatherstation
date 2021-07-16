@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Weatherstation</string>
+    <string name="facebook_app_id">974758863376227</string>
+    <string name="asset_statements" translatable="false">[{ \"include\": \"https://weatherstation-8be7b.web.app/.well-known/assetlinks.json\" }]</string>
+</resources>
