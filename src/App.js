@@ -5,6 +5,10 @@ import AppNavigator from './navigation/AppNavigator';
 import inAppMessaging from '@react-native-firebase/in-app-messaging';
 import messaging from '@react-native-firebase/messaging';
 
+//redux
+import {Provider} from 'react-redux';
+import store from './redux';
+
 const App = () => {
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
@@ -36,7 +40,9 @@ const App = () => {
 
   return (
     <SafeAreaProvider>
-      <AppNavigator />
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
     </SafeAreaProvider>
   );
 };
