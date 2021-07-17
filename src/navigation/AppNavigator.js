@@ -41,7 +41,6 @@ export default function AppNavigator() {
   return (
     <NavigationContainer linking={linking} fallback={<Loading />}>
       <Bottom.Navigator
-        initialRouteName="Discover"
         tabBarOptions={{
           showLabel: false,
           activeTintColor: 'red',

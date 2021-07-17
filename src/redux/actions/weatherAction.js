@@ -8,16 +8,24 @@ import {
   SEARCH_WEATHER,
 } from '../types';
 
-const fetchCurrent = () => async dispatch => {
+const fetchCurrent = (lat, lon) => async dispatch => {
   try {
+    console.log(lat, lon);
     dispatch({type: FETCH_CURRENT});
-    const response = await weather.get('weather', {
-      params: {
-        q: 'Noida',
-      },
-    });
-
-    dispatch({type: FETCH_CURRENT_SUCCESS, payload: response.data});
+    await weather
+      .get('weather', {
+        params: {
+          lat,
+          lon,
+        },
+      })
+      .then(response => {
+        dispatch({type: FETCH_CURRENT_SUCCESS, payload: response.data});
+      })
+      .catch(err => {
+        dispatch({type: FETCH_CURRENT_FAIL, payload: 'Something went wrong'});
+        console.log(err);
+      });
   } catch (error) {
     dispatch({type: FETCH_CURRENT_FAIL, payload: error});
     throw error;
