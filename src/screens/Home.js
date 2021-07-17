@@ -5,6 +5,7 @@ import {Text, View, StyleSheet, SafeAreaView, Image} from 'react-native';
 import {fonts} from '../constants';
 import {Loading} from '../components';
 import {Icon} from 'react-native-elements';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Home = () => {
   return (
