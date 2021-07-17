@@ -7,7 +7,10 @@ import messaging from '@react-native-firebase/messaging';
 
 //redux
 import {Provider} from 'react-redux';
-import store from './redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import createStore from './redux';
+
+const {store, persistor} = createStore();
 
 const App = () => {
   useEffect(() => {
@@ -41,7 +44,9 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <Provider store={store}>
-        <AppNavigator />
+        <PersistGate persistor={persistor} loading={null}>
+          <AppNavigator />
+        </PersistGate>
       </Provider>
     </SafeAreaProvider>
   );
