@@ -38,18 +38,6 @@ const requestCameraPermission = async () => {
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
       console.log('You can use the camera');
-      Geolocation.getCurrentPosition(
-        info => {
-          setLat(info.coords.latitude);
-          setLong(info.coords.longitude);
-        },
-        error => console.log(error, 'Geolocation error'),
-        {
-          // enableHighAccuracy: false,
-          timeout: 2000,
-          maximumAge: 3600000,
-        },
-      );
     } else {
       console.log('Camera permission denied');
     }
@@ -64,7 +52,15 @@ const Home = ({data, loading, fetchCurrent}) => {
 
   useEffect(() => {
     requestCameraPermission();
+    Geolocation.getCurrentPosition(
+      info => {
+        setLat(info.coords.latitude);
+        setLong(info.coords.longitude);
+      },
+      error => console.log(error, 'Geolocation error'),
 
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
+    );
     fetchCurrent(lat, long);
   }, []);
 
