@@ -1,14 +1,25 @@
 import React from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
+import {Switch} from 'react-native-elements';
 
-const Settings = () => {
+import {changeTheme} from '../redux/actions/themeAction';
+import {connect} from 'react-redux';
+
+import getColorTheme from '../helpers/theme';
+
+const Settings = ({theme, changeTheme}) => {
+  const color = getColorTheme();
+
   return (
-    <SafeAreaView>
-      <View>
-        <Text>Settings</Text>
-      </View>
+    <SafeAreaView style={{backgroundColor: color.primary, flex: 1}}>
+      <Text>Settings</Text>
+      <Switch value={theme} onValueChange={() => changeTheme(!theme)} />
     </SafeAreaView>
   );
 };
 
-export default Settings;
+const mapStateToProps = state => ({
+  theme: state.theme.theme,
+});
+
+export default connect(mapStateToProps, {changeTheme})(Settings);

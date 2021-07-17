@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {Text, View, StyleSheet, SafeAreaView, Image} from 'react-native';
 
@@ -7,18 +7,36 @@ import {Loading} from '../components';
 import {Icon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 
-const Home = () => {
+import {fetchCurrent} from '../redux/actions/weatherAction';
+import {connect} from 'react-redux';
+
+const Home = ({loading, error, data, fetchCurrent}) => {
+  useEffect(() => {
+    //fetchCurrent();
+  }, []);
+
+  const {main, weather} = data;
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={styles.container}>
         <View style={styles.view}>
           <View>
             <Text style={styles.text}>San Francisco</Text>
-            <Text style={{fontSize: 60}}>18 {'\u00b0'}</Text>
-            <View
-              style={{backgroundColor: '#f2efec', justifyContent: 'center'}}>
-              <Text>Cloudy</Text>
-            </View>
+            <Text style={{fontSize: 60}}>
+              {weather[0].icon} {'\u00b0'}
+            </Text>
+
+            <Text
+              style={{
+                backgroundColor: 'red',
+                justifyContent: 'center',
+                alignItems: 'center',
+                margin: 10,
+                padding: 10,
+              }}>
+              Cloudy
+            </Text>
           </View>
           <View>
             <Icon name="cloud" type="entypo" size={40} color="#517fa4" />
@@ -33,7 +51,6 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fffffb',
   },
   view: {
     flexDirection: 'row',
@@ -58,4 +75,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+const mapStateToProps = state => ({
+  loading: state.weather.loading,
+  data: state.weather.weather,
+  error: state.weather.error,
+});
+
+export default connect(mapStateToProps, {fetchCurrent})(Home);
