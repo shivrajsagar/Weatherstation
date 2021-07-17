@@ -4,6 +4,7 @@ import {Text, View, StyleSheet, SafeAreaView, Image} from 'react-native';
 
 import {fonts} from '../constants';
 import {Loading} from '../components';
+import {Icon} from 'react-native-elements';
 
 const Home = () => {
   return (
@@ -12,13 +13,16 @@ const Home = () => {
         <View style={styles.view}>
           <View>
             <Text style={styles.text}>San Francisco</Text>
-            <Text style={{fontSize: 60}}>18 </Text>
+            <Text style={{fontSize: 60}}>18 {'\u00b0'}</Text>
             <View
               style={{backgroundColor: '#f2efec', justifyContent: 'center'}}>
               <Text>Cloudy</Text>
             </View>
           </View>
-          <Image style={styles.image} />
+          <View>
+            <Icon name="cloud" type="entypo" size={40} color="#517fa4" />
+            <Image style={styles.image} />
+          </View>
         </View>
       </View>
     </SafeAreaView>
@@ -45,6 +49,7 @@ const styles = StyleSheet.create({
     marginRight: -140,
     marginTop: -30,
   },
+  iconview: {},
   text: {
     fontSize: 25,
     marginTop: 20,

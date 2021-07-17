@@ -5,6 +5,8 @@ PODS:
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
   - boost-for-react-native (1.63.0)
+  - BVLinearGradient (2.5.6):
+    - React
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.64.2)
@@ -575,6 +577,7 @@ PODS:
     - Yoga (~> 1.14)
 
 DEPENDENCIES:
+  - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
@@ -684,6 +687,8 @@ SPEC REPOS:
     - YogaKit
 
 EXTERNAL SOURCES:
+  BVLinearGradient:
+    :path: "../node_modules/react-native-linear-gradient"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -778,10 +783,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
+  BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: 5bded24aac8a9e05a3b1af56140acd1a84918967
+  FBReactNativeSpec: fa0fc65cce96cde0b86fbffa47a31a34e057bb69
   FBSDKCoreKit: 4afd6ff53d8133a433dbcda44451c9498f8c6ce4
   FBSDKLoginKit: 7181765f2524d7ebf82d9629066c8e6caafc99d0
   FBSDKShareKit: 0c0d51b3af47075a85ed9bea0e28b2fc70e3594b
