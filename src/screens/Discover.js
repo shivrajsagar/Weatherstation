@@ -1,14 +1,48 @@
-import React from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, SafeAreaView, Alert} from 'react-native';
+import {SearchBar} from 'react-native-elements';
 
-const Discover = () => {
+import {searchWeather} from '../redux/actions/weatherAction';
+import {connect} from 'react-redux';
+import SearchCard from '../components/SearchCard';
+
+const Discover = ({data, loading, error, searchWeather}) => {
+  const [value, setValue] = useState('');
+
   return (
     <SafeAreaView>
-      <View>
-        <Text>Discover</Text>
-      </View>
+      <SearchBar
+        autoCapitalize="none"
+        keyboardType="default"
+        showLoading={loading}
+        value={value}
+        placeholder="Search here"
+        onChangeText={text => setValue(text)}
+        onEndEditing={() => searchWeather(value)}
+        containerStyle={{
+          backgroundColor: '#f3f3f3',
+          borderTopColor: 'transparent',
+          borderBottomColor: 'transparent',
+        }}
+        inputContainerStyle={{
+          backgroundColor: 'white',
+          borderRadius: 15,
+        }}
+        inputStyle={{
+          color: 'black',
+        }}
+      />
+
+      {data && <SearchCard item={data} />}
+      {!!error && <Text>{error}</Text>}
     </SafeAreaView>
   );
 };
 
-export default Discover;
+const mapStateToProps = state => ({
+  data: state.weather.search,
+  loading: state.weather.searchLoading,
+  error: state.weather.searchError,
+});
+
+export default connect(mapStateToProps, {searchWeather})(Discover);

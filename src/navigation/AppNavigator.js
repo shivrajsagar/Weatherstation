@@ -3,15 +3,27 @@ import {Icon, Text} from 'react-native-elements';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack';
 
 //screens
 import Home from '../screens/Home';
 import Discover from '../screens/Discover';
 import Favorite from '../screens/Favorite';
 import Settings from '../screens/Settings';
+import DetailScreen from '../screens/DetailScreen';
 import {Loading} from '../components';
 
 const Bottom = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+function DiscoverStack() {
+  return (
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="Discover" component={Discover} />
+      <Stack.Screen name="Detail" component={DetailScreen} />
+    </Stack.Navigator>
+  );
+}
 
 export default function AppNavigator() {
   const linking = {
@@ -29,6 +41,7 @@ export default function AppNavigator() {
   return (
     <NavigationContainer linking={linking} fallback={<Loading />}>
       <Bottom.Navigator
+        initialRouteName="Discover"
         tabBarOptions={{
           showLabel: false,
           activeTintColor: 'red',
@@ -44,7 +57,7 @@ export default function AppNavigator() {
         />
         <Bottom.Screen
           name="Discover"
-          component={Discover}
+          component={DiscoverStack}
           options={{
             tabBarIcon: ({size, color}) => (
               <Icon name="search" type="feather" size={size} color={color} />

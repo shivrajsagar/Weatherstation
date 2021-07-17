@@ -15,3 +15,8 @@ export const REGISTER_FAIL = 'register_fail';
 export const FETCH_CURRENT = 'fetch_current';
 export const FETCH_CURRENT_SUCCESS = 'fetch_current_success';
 export const FETCH_CURRENT_FAIL = 'fetch_current_fail';
+
+//search
+export const SEARCH_WEATHER = 'search_weather';
+export const SEARCH_LOADING = 'search_loading';
+export const SEARCH_ERROR = 'search_error';
