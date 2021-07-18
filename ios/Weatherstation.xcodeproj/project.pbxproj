@@ -20,6 +20,7 @@
 		049BBC1526A1A40B00EF4B22 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049BBC0A26A1A18A00EF4B22 /* Lato-Regular.ttf */; };
 		049BBC1626A1A40B00EF4B22 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049BBC0826A1A18900EF4B22 /* Lato-Thin.ttf */; };
 		049BBC1726A1A40B00EF4B22 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049BBC0726A1A18900EF4B22 /* Lato-ThinItalic.ttf */; };
+		04DC82EB26A419B300BD4F83 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DC82EA26A419B300BD4F83 /* StoreKit.framework */; };
 		11771FECA58663DEEAD1213E /* libPods-Weatherstation-WeatherstationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4A0CF522520EFBCFB14FB6C /* libPods-Weatherstation-WeatherstationTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -55,6 +56,7 @@
 		049BBC0A26A1A18A00EF4B22 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		049BBC0B26A1A18A00EF4B22 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		04CDB1CF26A1F48000F12399 /* Weatherstation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Weatherstation.entitlements; path = Weatherstation/Weatherstation.entitlements; sourceTree = "<group>"; };
+		04DC82EA26A419B300BD4F83 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0CAD5C9CFD480F2971E0CC9D /* libPods-Weatherstation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weatherstation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* Weatherstation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weatherstation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Weatherstation/AppDelegate.h; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04DC82EB26A419B300BD4F83 /* StoreKit.framework in Frameworks */,
 				049BBBFF26A19EB300EF4B22 /* libswiftWebKit.tbd in Frameworks */,
 				90C3262A30EFBBE0D273A5EA /* libPods-Weatherstation.a in Frameworks */,
 			);
@@ -137,6 +140,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04DC82EA26A419B300BD4F83 /* StoreKit.framework */,
 				049BBBFE26A19EB300EF4B22 /* libswiftWebKit.tbd */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				0CAD5C9CFD480F2971E0CC9D /* libPods-Weatherstation.a */,

@@ -22,6 +22,8 @@ import {DATA, Current} from '../constants/data';
 navigator.geolocation = require('@react-native-community/geolocation');
 
 import Geolocation from '@react-native-community/geolocation';
+import getColorTheme from '../helpers/theme';
+import {fonts} from '../constants';
 
 const requestCameraPermission = async () => {
   try {
@@ -48,6 +50,8 @@ const requestCameraPermission = async () => {
 };
 
 const Home = ({data, loading, fetchCurrent}) => {
+  const color = getColorTheme();
+
   const [lat, setLat] = useState(28.535517);
   const [long, setLong] = useState(77.391029);
 
@@ -75,8 +79,8 @@ const Home = ({data, loading, fetchCurrent}) => {
       <>
         <View style={styles.view}>
           <View>
-            <Text style={styles.text}>{name}</Text>
-            <Text style={{fontSize: 60}}>
+            <Text style={[styles.text, {color: color.text}]}>{name}</Text>
+            <Text style={{fontSize: 60, color: color.text}}>
               {weather[0].icon}
               {'\u00b0'}
             </Text>
@@ -123,7 +127,14 @@ const Home = ({data, loading, fetchCurrent}) => {
               color="#6e7798"
               size={20}
             />
-            <Text style={{marginLeft: 5, color: '#6e7798'}}>15%</Text>
+            <Text
+              style={{
+                marginLeft: 5,
+                color: color.text,
+                fontFamily: fonts.italic,
+              }}>
+              15%
+            </Text>
           </View>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Icon
@@ -132,15 +143,29 @@ const Home = ({data, loading, fetchCurrent}) => {
               color="#6e7798"
               size={20}
             />
-            <Text style={{marginLeft: 5, color: '#6e7798'}}>0.533 mBar</Text>
+            <Text
+              style={{
+                marginLeft: 5,
+                color: color.text,
+                fontFamily: fonts.italic,
+              }}>
+              0.533 mBar
+            </Text>
           </View>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Icon name="speed" color="#6e7798" size={20} />
-            <Text style={{marginLeft: 5, color: '#6e7798'}}>9 KM/h</Text>
+            <Text
+              style={{
+                marginLeft: 5,
+                color: color.text,
+                fontFamily: fonts.italic,
+              }}>
+              9 KM/h
+            </Text>
           </View>
         </View>
         <View style={{marginTop: 30, marginLeft: 30}}>
-          <Text style={{fontSize: 20, color: '#342432'}}>Today </Text>
+          <Text style={{fontSize: 20, color: color.text}}>Today </Text>
         </View>
 
         <FlatList
@@ -157,7 +182,7 @@ const Home = ({data, loading, fetchCurrent}) => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: color.background}}>
       <FlatList
         showsVerticalScrollIndicator={false}
         data={DATA}
@@ -191,11 +216,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#ff689d',
     marginRight: -140,
   },
-
   text: {
     fontSize: 25,
     marginTop: 20,
     marginLeft: 5,
+    fontFamily: fonts.bold,
   },
 });
 

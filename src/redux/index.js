@@ -11,6 +11,7 @@ const middleware = [thunk];
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
+  blacklist: ['navigation'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

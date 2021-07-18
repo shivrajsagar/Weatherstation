@@ -11,7 +11,13 @@ import Discover from '../screens/Discover';
 import Favorite from '../screens/Favorite';
 import Settings from '../screens/Settings';
 import DetailScreen from '../screens/DetailScreen';
+import Signin from '../screens/auth/Signin';
+import Signup from '../screens/auth/Signup';
+import Account from '../screens/auth/Account';
+
+//components
 import {Loading} from '../components';
+import getColorTheme from '../helpers/theme';
 
 const Bottom = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -25,7 +31,20 @@ function DiscoverStack() {
   );
 }
 
+function SettingStack(props) {
+  return (
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="Setting" component={Settings} />
+      <Stack.Screen name="Signin" component={Signin} />
+      <Stack.Screen name="Signup" component={Signup} />
+      <Stack.Screen name="Account" component={Account} />
+    </Stack.Navigator>
+  );
+}
+
 export default function AppNavigator() {
+  const color = getColorTheme();
+
   const linking = {
     prefixes: ['weatherstation://', 'https://weatherstation-8be7b.web.app'],
     config: {
@@ -44,6 +63,9 @@ export default function AppNavigator() {
         tabBarOptions={{
           showLabel: false,
           activeTintColor: 'red',
+          style: {
+            backgroundColor: color.background,
+          },
         }}>
         <Bottom.Screen
           name="Home"
@@ -74,7 +96,7 @@ export default function AppNavigator() {
         />
         <Bottom.Screen
           name="Settings"
-          component={Settings}
+          component={SettingStack}
           options={{
             tabBarIcon: ({color, size}) => (
               <Icon name="settings" size={size} color={color} />

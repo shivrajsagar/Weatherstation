@@ -138,4 +138,52 @@ const Current = {
   cod: 200,
 };
 
-export {DATA, Current};
+const Settings = [
+  {
+    title: 'Account',
+    iconName: 'user',
+    iconType: 'feather',
+  },
+  {
+    title: 'Notification',
+    iconName: 'bell',
+    iconType: 'feather',
+  },
+  {
+    title: 'Dark Mode',
+    iconName: 'theme-light-dark',
+    iconType: 'material-community',
+  },
+  {
+    title: 'Language',
+    iconName: 'language',
+    iconType: 'font-awesome',
+  },
+  {
+    title: 'Share',
+    iconName: 'share-social-outline',
+    iconType: 'ionicon',
+  },
+  {
+    title: 'Terms and Conditions',
+    iconName: 'document-text-outline',
+    iconType: 'ionicon',
+  },
+  {
+    title: 'Privacy Policy',
+    iconName: 'shield-checkmark-outline',
+    iconType: 'ionicon',
+  },
+  {
+    title: 'Help',
+    iconName: 'help-circle-outline',
+    iconType: 'ionicon',
+  },
+  {
+    title: 'About',
+    iconName: 'information-circle-outline',
+    iconType: 'ionicon',
+  },
+];
+
+export {DATA, Current, Settings};

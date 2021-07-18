@@ -1,72 +1,43 @@
 import React, {useEffect, useState} from 'react';
-import {Alert} from 'react-native';
+import {Alert, PushNotificationIOS, StatusBar} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import AppNavigator from './navigation/AppNavigator';
-import inAppMessaging from '@react-native-firebase/in-app-messaging';
 import messaging from '@react-native-firebase/messaging';
+
+import PushNotification, {Importance} from 'react-native-push-notification';
 
 //redux
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import createStore from './redux';
 
-import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import {useSelector} from 'react-redux';
 
 const {store, persistor} = createStore();
 
 const App = () => {
-  const [permissions, setPermissions] = useState({});
-
-  const setNotificationCategories = () => {
-    PushNotificationIOS.setNotificationCategories([
-      {
-        id: 'userAction',
-        actions: [
-          {id: 'open', title: 'Open', options: {foreground: true}},
-          {
-            id: 'ignore',
-            title: 'Desruptive',
-            options: {foreground: true, destructive: true},
-          },
-          {
-            id: 'text',
-            title: 'Text Input',
-            options: {foreground: true},
-            textInput: {buttonTitle: 'Send'},
-          },
-        ],
-      },
-    ]);
+  const showNotification = data => {
+    PushNotification.localNotification({
+      channelId: '12345',
+      id: 0,
+      title: data.notification.title,
+      message: data.notification.body,
+      playSound: true,
+      soundName: 'notification.mp3',
+      smallIcon: 'ic_notification',
+    });
   };
 
-  PushNotificationIOS.addNotificationRequest({
-    id: 'notificationWithSound',
-    title: 'Sample Title',
-    subtitle: 'Sample Subtitle',
-    body: 'Sample local notification with custom sound',
-    sound: 'customSound.wav',
-    badge: 1,
-  });
   useEffect(() => {
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    const unsubscribe = messaging().onMessage(async data => {
+      //Alert.alert('A new FCM message arrived!', JSON.stringify(data));
+      showNotification(data);
     });
 
     return unsubscribe;
   }, []);
 
-  const details = {
-    alertBody: 'This is the body',
-    alertTitle: 'this is the title',
-    applicationIconBadgeNumber: 2,
-  };
-
   useEffect(() => {
-    PushNotificationIOS.addEventListener('notification', onRemoteNotification);
-    
-    setNotificationCategories();
-
-    bootstrap();
     requestUserPermission();
   }, []);
 
@@ -81,24 +52,11 @@ const App = () => {
     }
   }
 
-  async function bootstrap() {
-    await inAppMessaging().setMessagesDisplaySuppressed(true);
-  }
-
-  const onRemoteNotification = notification => {
-    const isClicked = notification.getData().userInteraction === 1;
-
-    if (isClicked) {
-      // Navigate user to another screen
-    } else {
-      // Do something else with push notification
-    }
-  };
-
   return (
     <SafeAreaProvider>
       <Provider store={store}>
         <PersistGate persistor={persistor} loading={null}>
+          <StatusBar barStyle="default" backgroundColor="red" />
           <AppNavigator />
         </PersistGate>
       </Provider>

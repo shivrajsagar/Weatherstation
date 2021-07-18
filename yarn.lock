@@ -5850,6 +5850,11 @@ react-native-maps@^0.28.0:
   dependencies:
     "@types/geojson" "^7946.0.7"
 
+react-native-purchases@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-purchases/-/react-native-purchases-4.2.0.tgz#cdf5a12a5800c642571543c08446c62d12d98b36"
+  integrity sha512-O16gWUuJtS5ebvTdFmMU639BaiRFAszoeOm1Di3+uUVavhDwqCesITUM6dVH4p8DwAr1OWENXAAjV+aTJDKMRQ==
+
 react-native-push-notification@^7.4.0:
   version "7.4.0"
   resolved "https://registry.yarnpkg.com/react-native-push-notification/-/react-native-push-notification-7.4.0.tgz#81192356eddfee8eeaf72a9a696c7c90bf5b0ece"
