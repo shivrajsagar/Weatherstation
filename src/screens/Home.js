@@ -8,6 +8,7 @@ import {
   FlatList,
   ActivityIndicator,
   PermissionsAndroid,
+  Platform,
 } from 'react-native';
 
 import {DayCard, WeekCard} from '../components';
@@ -47,11 +48,13 @@ const requestCameraPermission = async () => {
 };
 
 const Home = ({data, loading, fetchCurrent}) => {
-  const [lat, setLat] = useState(0);
-  const [long, setLong] = useState(0);
+  const [lat, setLat] = useState(28.535517);
+  const [long, setLong] = useState(77.391029);
 
   useEffect(() => {
-    requestCameraPermission();
+    if (Platform.OS == 'android') {
+      requestCameraPermission();
+    }
     Geolocation.getCurrentPosition(
       info => {
         setLat(info.coords.latitude);
